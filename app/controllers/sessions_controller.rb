@@ -4,9 +4,10 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by({"email" => params["email"]})
-    if @user = !nil
+    if @user != nil
       if @user["password"] == params["password"]
-        flash["notice"] = "Welcome"
+        session["user_id"] = @user["id"]
+        flash["notice"] = "Welcome, #{@user.username}!"
         redirect_to "/places"
       else
         flash["notice"] = "Incorrect login information. Please try again"
