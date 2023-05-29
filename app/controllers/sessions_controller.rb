@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if @user != nil
       if @user["password"] == params["password"]
         session["user_id"] = @user["id"]
-        flash["notice"] = "Welcome, #{@user.username}!"
+        flash["notice"] = "Success!"
         redirect_to "/places"
       else
         flash["notice"] = "Incorrect login information. Please try again"
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session["username"] = nil
+    session["user_id"] = nil
     flash["notice"] = "Logged out"
     redirect_to "/sessions/new"
 
