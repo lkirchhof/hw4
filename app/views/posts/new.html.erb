@@ -1,5 +1,6 @@
 <div class=container-fluid>
-  <h1>New Post</h1>
+  <h2>New Post</h2>
+  <% if @current_user %>
 
   <%= form_with :model => @post do |form| %>
     <%= form.hidden_field "place_id" %>
@@ -19,4 +20,8 @@
       <%= form.submit class: "btn btn-outline-dark"%>
     </p>
   <% end %>
+<% else %>
+  <a href="/sessions/new">Login</a> to post.
+<% end %>
+
 </div>
