@@ -22,4 +22,5 @@ end
 
 group :production do
   gem "pg"
+  gem 'dalli', '~> 2.7'
 end
